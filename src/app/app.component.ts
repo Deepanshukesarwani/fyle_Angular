@@ -74,6 +74,7 @@ export class AppComponent implements OnInit {
   pages: number = 10;
   currentPage: number = 1;
   totalPages: number[] = [];
+  isloading:boolean=false;
 
   constructor(
     private apiService: ApiService,
@@ -87,6 +88,7 @@ export class AppComponent implements OnInit {
     // Add your search logic here...
     this.apicall();
     this.isApicall = true;
+    this.isloading=true;
   }
 
   apicall() {
@@ -107,6 +109,7 @@ export class AppComponent implements OnInit {
       },
       complete: () => {
         console.log('Request completed');
+        this.isloading=false;
       },
     });
   }
