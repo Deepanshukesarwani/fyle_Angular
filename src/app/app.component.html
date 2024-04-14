@@ -1,49 +1,71 @@
-<!-- <div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
-  </div>
-  <div>
-    <label for="site-search">Search the site:
-    <input type="search" class=" border-2 border-black" id="site-search" name="q" />
-  </label>
-    <button>Search</button>
-  </div>
-  <div>
-    {{res.name}}
-  </div>
-</div> -->
-
 <div class="w-screen h-screen">
-  <div class="font-bold text-3xl bg-red-300 w-full h-14 flex justify-center items-center ">
+  <div
+    class="font-bold text-3xl bg-red-300 w-full h-14 flex justify-center items-center"
+  >
     <h1>Learning Angular</h1>
   </div>
-  <hr>
-  <div class=" w-full h-14 flex justify-center items-center bg-orange-200 ">
-    <label for="site-search">Search the site:
-    <input type="search" class="border-2 w-96 border-black" id="site-search" name="q" [(ngModel)]="searchTerm" />
+  <hr />
+  <div class="w-full h-14 flex justify-center items-center bg-orange-200">
+    <label for="site-search"
+      >Search the site:
+      <input
+        type="search"
+        class="border-2 w-96 border-black"
+        id="site-search"
+        name="q"
+        [(ngModel)]="searchTerm"
+      />
     </label>
     <button (click)="handleSearch()">Search</button>
   </div>
 
- 
-  <!-- <div ></div> -->
   <div *ngIf="isApicall">
-    {{res.name}}
-    <img src={{res.avatar_url}} class="w-20 rounded-sm" alt=`imageof${res.name}`>
-<!-- 
-    <div>
-      @for(repo of arrayOfRepo;track repo.id){
-      <h1> Project Name: {{repo.name}}</h1>
-      <p>description of repositary: {{repo.description}}</p>
-    }   
-    </div> -->
-    <!-- <div *ngFor="let repo of arrayOfRepo; trackBy: repo.id">
-      <h1> Project Name: {{repo.name}}</h1>
-      <p>description of repository: {{repo.description}}</p>
-    </div> -->
+    {{ res.login}}
+    <img
+      src="{{ res.avatar_url }}"
+      class="w-20 rounded-sm"
+      alt="`imageof${res.name}`"
+    />
+    <label for="Pages">
+      <p>Enter the number of repos you want to see in one page</p>
+      <input
+        type="number"
+        class="border-8"
+        id="Pages"
+        [(ngModel)]="pages"
+        (change)="calculateTotalPages()"
+      />
+    </label>
+
+    <div
+      *ngFor="
+        let r of arrayOfRepo.slice(
+          (currentPage - 1) * pages,
+          currentPage * pages
+        )
+      "
+      class="w-screen h-auto bg-lime-200 flex justify-center items-center"
+    >
+      <div
+        class="w-1/2 h-40 bg-sky-600 flex-col justify-center items-center border"
+      >
+        <h1>Project Name: {{ r.name }}</h1>
+        <br />
+        <p>description of repository: {{ r.description }}</p>
+      </div>
+    </div>
+
+    <div class=" flex justify-center">
+      <button
+        *ngFor="let page of totalPages"
+        (click)="paginate(page)"
+        [disabled]="currentPage === page"
+        class="w-14 border-4 rounded-sm border-teal-400 border-solid"
+      >
+        {{ page }}
+      </button>
+    </div>
   </div>
-  <div *ngIf="!isApicall">
-    
-  </div>
-  <!-- <app-first {{arrayOfRepo}}></app-first> -->
+
+  <div *ngIf="!isApicall"></div>
 </div>

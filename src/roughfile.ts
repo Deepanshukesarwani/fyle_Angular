@@ -67,3 +67,48 @@
         
 //   }
 // }
+
+
+// interface Repository {
+//     id: number;
+//     node_id: string;
+//     name: string;
+//     full_name: string;
+//     private: boolean;
+//     owner: {
+//       login: string;
+//       id: number;
+//       node_id: string;
+//       avatar_url: string;
+//     };
+//     html_url: string;
+//     description: string;
+//     fork: boolean;
+    
+//   }
+
+
+
+
+
+
+
+
+// <!-- <div>
+// @for(r of repo ;track r.id){
+// <h1> Project Name: {{r.name}}</h1>
+// <p>description of repositary: {{r.description}}</p>
+// }   
+// </div> -->
+
+// <!-- <label for="Pages"> <p>Enter the number of repo you want to see in one page</p>
+// <input type="number" class="border-8" id="Pages"  [(ngModel)]="pages">
+// </label>
+// <div *ngFor="let r of arrayOfRepo" class="w-screen h-auto bg-lime-200 flex justify-center items-center">
+ 
+//   <div class="w-1/2 h-40 bg-sky-600 flex-col justify-center items-center border">
+//           <h1> Project Name: {{r.name}}</h1>
+//           <br>
+//           <p>description of repository: {{r.description}}</p>        
+//   </div>
+// </div> -->

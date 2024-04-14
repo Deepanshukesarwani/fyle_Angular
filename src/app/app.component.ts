@@ -1,26 +1,10 @@
+
 // import { Component, OnInit } from '@angular/core';
 // import { ApiService } from './services/api.service';
 // import { ResponseService } from '../app/services/responce.service';
 
 // // Define interface for repository object
-// interface Repository {
-//   id: number;
-//   node_id: string;
-//   name: string;
-//   full_name: string;
-//   private: boolean;
-//   owner: {
-//     login: string;
-//     id: number;
-//     node_id: string;
-//     avatar_url: string;
-//     // Add other properties as needed
-//   };
-//   html_url: string;
-//   description: string;
-//   fork: boolean;
-//   // Add other properties as needed
-// }
+
 
 // @Component({
 //   selector: 'app-root',
@@ -29,10 +13,11 @@
 // })
 // export class AppComponent implements OnInit {
 //   res: any;
-//   searchTerm: string = '';
+//   searchTerm: string = 'johnpapa';
 //   isApicall: boolean = false;
-//   arrayOfRepo: Repository[] = [];
-
+//   arrayOfRepo:any;
+//   pages: number =10;
+  
 //   constructor(
 //     private apiService: ApiService,
 //     private responseService: ResponseService
@@ -54,12 +39,13 @@
 //     });
 
 //     this.apiService.getUser(this.searchTerm + '/repos').subscribe({
-//       next: (response: Repository[]) => {
-//         console.log(response);
-//         // Assign the response to arrayOfRepo
+//       next: (response) => {
+       
 //         this.arrayOfRepo = response;
+//         console.log(this.arrayOfRepo);
+//         console.log(this.arrayOfRepo.length);
 //       },
-//       error: (error) => {
+//       error: (error: any) => {
 //         console.error('An error occurred:', error);
 //       },
 //       complete: () => {
@@ -67,34 +53,13 @@
 //       },
 //     });
 //   }
+  
 // }
 
-
-// 
 
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { ResponseService } from '../app/services/responce.service';
-
-// Define interface for repository object
-interface Repository {
-  id: number;
-  node_id: string;
-  name: string;
-  full_name: string;
-  private: boolean;
-  owner: {
-    login: string;
-    id: number;
-    node_id: string;
-    avatar_url: string;
-    // Add other properties as needed
-  };
-  html_url: string;
-  description: string;
-  fork: boolean;
-  // Add other properties as needed
-}
 
 @Component({
   selector: 'app-root',
@@ -103,9 +68,12 @@ interface Repository {
 })
 export class AppComponent implements OnInit {
   res: any;
-  searchTerm: string = '';
+  searchTerm: string = 'johnpapa';
   isApicall: boolean = false;
-  arrayOfRepo:any;
+  arrayOfRepo: any;
+  pages: number = 10;
+  currentPage: number = 1;
+  totalPages: number[] = [];
 
   constructor(
     private apiService: ApiService,
@@ -129,9 +97,10 @@ export class AppComponent implements OnInit {
 
     this.apiService.getUser(this.searchTerm + '/repos').subscribe({
       next: (response) => {
-       
         this.arrayOfRepo = response;
         console.log(this.arrayOfRepo);
+        console.log(this.arrayOfRepo.length);
+        this.calculateTotalPages();
       },
       error: (error: any) => {
         console.error('An error occurred:', error);
@@ -141,9 +110,13 @@ export class AppComponent implements OnInit {
       },
     });
   }
-  method()
-  {
-   
+
+  calculateTotalPages() {
+    this.totalPages = Array.from({ length: Math.ceil(this.arrayOfRepo.length / this.pages) }, (_, i) => i + 1);
+  }
+
+  paginate(pageNumber: number) {
+    this.currentPage = pageNumber;
   }
 }
 
