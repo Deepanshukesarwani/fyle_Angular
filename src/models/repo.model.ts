@@ -1,0 +1,1 @@
+export type User = {name:string, description:string,language:string}
