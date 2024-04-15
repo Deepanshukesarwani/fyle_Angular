@@ -6,11 +6,13 @@ import { HttpClientModule } from  '@angular/common/http';
 import { FirstComponent } from './components/first/first.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent
+    FirstComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

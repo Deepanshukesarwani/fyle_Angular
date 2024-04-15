@@ -1,8 +1,9 @@
 <div class="w-screen h-screen">
   <div
-    class="font-bold text-3xl bg-red-300 w-full h-14 flex justify-center items-center"
+    class="font-bold  bg-red-300 w-full h-auto flex justify-center items-center"
   >
-    <h1>Learning Angular</h1>
+    <app-navbar></app-navbar>
+    <!-- <h1>Learning Angular</h1> -->
   </div>
   <hr />
   <div class="w-full h-14 flex justify-center items-center bg-orange-200">
@@ -70,6 +71,9 @@
           {{ page }}
         </button>
       </div>
+
+      <app-first></app-first>
+
     </div>
   
     <div *ngIf="!isApicall"></div>

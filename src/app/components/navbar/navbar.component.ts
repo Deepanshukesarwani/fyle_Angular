@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
-import { ResponseService } from '../app/services/responce.service';
-
+import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { ResponseService } from '../../services/responce.service';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class AppComponent implements OnInit {
-  title:string = 'fyle-frontend-challenge';
+export class NavbarComponent {
+
+  constructor(
+    private apiService: ApiService,
+    private responseService: ResponseService
+  ) {}
+
   res: any;
   searchTerm: string = 'johnpapa';
   isApicall: boolean = false;
@@ -18,18 +22,12 @@ export class AppComponent implements OnInit {
   totalPages: number[] = [];
   isloading:boolean=false;
 
-  constructor(
-    private apiService: ApiService,
-    private responseService: ResponseService
-  ) {}
-
-  ngOnInit() {}
-
-  handleSearch() {
+  clickHandler()
+  {
     this.apicall();
     this.isApicall = true;
     this.isloading=true;
-    console.log("bjn");
+    console.log("clicked");
   }
 
   apicall() {
@@ -41,8 +39,6 @@ export class AppComponent implements OnInit {
     this.apiService.getUser(this.searchTerm + '/repos').subscribe({
       next: (response) => {
         this.arrayOfRepo = response;
-        // console.log(this.arrayOfRepo);
-        // console.log(this.arrayOfRepo.length);
         this.calculateTotalPages();
       },
       error: (error: any) => {
@@ -63,5 +59,3 @@ export class AppComponent implements OnInit {
     this.currentPage = pageNumber;
   }
 }
-
-

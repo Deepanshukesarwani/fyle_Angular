@@ -1,0 +1,18 @@
+<div class="flex justify-between w-screen border-10 h-auto flex-wrap">
+
+    <div class="w-1/2 flex justify-evenly flex-wrap">
+
+        <input type="search" id="usersearch" placeholder="Enter Github Username" name="q"
+        [(ngModel)]="searchTerm" class=" w-44">
+
+        <button class=" border-2 w-16" (click)="clickHandler()">Search</button>
+
+    </div>
+
+    <div class="flex justify-evenly w-1/2 h-auto flex-wrap">
+
+        <img src="" alt="user image">
+        <p>user</p>
+
+    </div>
+</div>
