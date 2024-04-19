@@ -1,0 +1,16 @@
+<p>repo-card works!oinio</p>
+
+
+
+<div *ngIf="Isloading">
+    loading............
+</div>
+
+<div *ngIf="!Isloading"
+>
+  <p>knkon</p>
+    <div *ngFor="let item of Repodetail" class="border-sky-400 border-4 w-1/2">
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+    </div>
+</div>

@@ -1,9 +1,8 @@
-<div class="flex justify-between w-screen border-10 h-auto flex-wrap">
+<div class="flex justify-between w-screen border-10 h-auto flex-wrap bg-blue-400">
 
     <div class="w-1/2 flex justify-evenly flex-wrap">
 
-        <input type="search" id="usersearch" placeholder="Enter Github Username" name="q"
-        [(ngModel)]="searchTerm" class=" w-44">
+        <input type="search" id="usersearch" placeholder="Enter Github Username" name="q"  [(ngModel)]="search"  class=" w-44 border-4">
 
         <button class=" border-2 w-16" (click)="clickHandler()">Search</button>
 
@@ -11,8 +10,15 @@
 
     <div class="flex justify-evenly w-1/2 h-auto flex-wrap">
 
-        <img src="" alt="user image">
-        <p>user</p>
+        <!-- <div ngIf*="IsSearched">
+        </div> -->
+        <div
+        *ngIf="isloadingDone">
+        <img src={{userImg}} class="w-14 h-14" alt="user image">
+        <p>{{username}}</p>
+    </div>
+          
+        
 
     </div>
 </div>
