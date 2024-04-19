@@ -67,16 +67,3 @@ export class RepoCardComponent implements OnInit, OnDestroy {
   }
 }
 
-  
-  // OnInit()
-  // {this.navdata.searchedStatusChange.subscribe((isSearched: boolean) => {
-  //   this.IsSearched = isSearched;
-  //   console.log('IsSearched:', this.IsSearched);
-  // });
-  // }
-  
-  // getRepo()
-  // {
-  //   this.res=this.responseService.getResponseData;
-  //   console.log(this.res);
-  // }
