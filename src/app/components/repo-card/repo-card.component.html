@@ -1,38 +1,50 @@
-<p>repo-card works!oinio</p>
 
-<input
+
+
+<div class=" ml-4">
+    <p>repo-card works!oinio</p>
+    <input
   type="number"
   placeholder="Repo per page"
   class="border-2 border-blue-900"
   [(ngModel)]="pages"
+  (ngModelChange)="onPageChange()"
 />
-
+</div>
 <div *ngIf="Isloading">loading............</div>
 
-<div *ngIf="!Isloading">
+<div *ngIf="!Isloading" class="  px-11 h-full mt-4" >
   <!-- <p>knkon</p> -->
-  <div
+  <!-- <div class=" grid grid-cols-2 gap-5"> -->
+    <div
     *ngFor="
       let item of Repodetail.slice(
         (currentPage - 1) * pages,
         currentPage * pages
       )
     "
-    class="border-sky-400 border-4 w-1/2 h-36"
+    class=" w-1/2 h-36 flex-col gap-5 "
   >
-    <h3>{{ item.name }}</h3>
-    <p>{{ item.description }}</p>
+  <div class="border-sky-400 border-4 h-32 rounded-s-3xl flex-col justify-center p-2">
+    <h3><span class="font-bold">Name of Repo :</span> {{ item.name }}</h3>
+    
+    <p><span class="font-bold">description:</span> {{ item.description }}</p>
   </div>
+    <br>
+  </div>
+  <!-- </div> -->
+  
 <br>
 <br>
-  <div class="flex justify-center w-screen bg-orange-300">
+</div>
+
+  <div class="flex  min-w-screen-lg justify-evenly ">
         <button
         *ngFor="let page of totalPages"
         (click)="paginate(page)"
         [disabled]="currentPage === page"
-        class="w-14 border-4 rounded-sm border-teal-400 border-solid"
+        class="w-20 border-4 rounded-sm border-teal-400 border-solid"
       >
         {{ page }}
       </button>
   </div>
-</div>

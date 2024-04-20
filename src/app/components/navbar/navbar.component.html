@@ -1,24 +1,45 @@
-<div class="flex justify-between w-screen border-10 h-auto flex-wrap bg-blue-400">
+<div
+  class="flex justify-between w-screen border-10  flex-wrap bg-blue-400 px-2.5"
+>
+  <div class="w-1/2 h-16 flex justify-evenly flex-wrap items-center">
 
-    <div class="w-1/2 flex justify-evenly flex-wrap">
 
-        <input type="search" id="usersearch" placeholder="Enter Github Username" name="q"  [(ngModel)]="search"  class=" w-44 border-4">
-
-        <button class=" border-2 w-16" (click)="clickHandler()">Search</button>
-
-    </div>
-
-    <div class="flex justify-evenly w-1/2 h-auto flex-wrap">
-
-        <!-- <div ngIf*="IsSearched">
-        </div> -->
-        <div
-        *ngIf="isloadingDone">
-        <img src={{userImg}} class="w-14 h-14" alt="user image">
-        <p>{{username}}</p>
-    </div>
-          
+    <div class="w-5/6  ">
+        <label
+        for=
+        "usersearch"
+        class="text-zinc-50 font-medium"
         
-
+      >
+        Github user name:
+    </label>
+        <input
+          type="search"
+          id="usersearch"
+          placeholder="Enter Github Username"
+          name="q"
+          [(ngModel)]="search"
+          class="w-1/3 h-12 border-8 rounded-se-md"
+        />
+     
     </div>
+   
+
+    <button class="w-1/6 h-12 rounded-se-md border-4" (click)="clickHandler()">
+      Search
+    </button>
+  </div>
+
+  <div *ngIf="isloadingDone" class=" w-1/2  flex justify-center items-center">
+    
+
+        <div class="w-4/6 ml-64 mt-1">
+            <img src="{{ userImg }}" class="w-14 h-14 rounded-se-md" alt="user image" />
+        </div>
+        <div class=" w-2/6">
+            <p class="text-zinc-50 font-medium  text-2xl">{{ username }}</p>
+        </div>
+  
+
+  </div>
 </div>

@@ -16,7 +16,7 @@ export class RepoCardComponent implements OnInit, OnDestroy {
   Isloading: boolean = true;
   totalPages: number[] = [];
   currentPage: number = 1;
-  pages: number = 3;
+  pages: number = 10;
   
   private responseDataSubscription!: Subscription;
 
@@ -54,6 +54,12 @@ export class RepoCardComponent implements OnInit, OnDestroy {
 
    
   }
+
+  onPageChange()
+  {
+    this.calculateTotalPages();
+  }
+
 
   calculateTotalPages() {
     this.totalPages = Array.from({ length: Math.ceil(this.Repodetail.length / this.pages) }, (_, i) => i + 1);
