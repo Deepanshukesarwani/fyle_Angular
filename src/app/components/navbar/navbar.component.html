@@ -1,10 +1,9 @@
-<div
-  class="flex justify-between w-screen border-10  flex-wrap bg-blue-400 px-2.5"
+<div class="flex justify-between w-[100%] h-full flex-wrap bg-blue-400 "
 >
   <div class="w-1/2 h-16 flex justify-evenly flex-wrap items-center">
 
 
-    <div class="w-5/6  ">
+    <div class="w-[75%]  flex justify-center items-center ">
         <label
         for=
         "usersearch"
@@ -19,27 +18,32 @@
           placeholder="Enter Github Username"
           name="q"
           [(ngModel)]="search"
-          class="w-1/3 h-12 border-8 rounded-se-md"
+          class="w-[60%] h-12  rounded-full p-2"
+          (keypress)="handleKeypress($event)"
         />
      
     </div>
    
-
-    <button class="w-1/6 h-12 rounded-se-md border-4" (click)="clickHandler()">
-      Search
-    </button>
+ <div class=" w-[25%]">
+   <button class="w-[100%] h-12 rounded-full border-2 font-semibold text-white" (click)="clickHandler()">
+     Search
+   </button>
+ </div>
   </div>
 
   <div *ngIf="isloadingDone" class=" w-1/2  flex justify-center items-center">
     
 
-        <div class="w-4/6 ml-64 mt-1">
-            <img src="{{ userImg }}" class="w-14 h-14 rounded-se-md" alt="user image" />
+        <div class="w-[30%]  flex justify-center">
+            <img src="{{ userImg }}" class="w-14 h-14 rounded-full " alt="user image" />
         </div>
-        <div class=" w-2/6">
+        <div class=" w-[70%]  flex justify-center">
             <p class="text-zinc-50 font-medium  text-2xl">{{ username }}</p>
         </div>
   
 
   </div>
 </div>
+ 
+
+<!-- this is my app-navbar  -->

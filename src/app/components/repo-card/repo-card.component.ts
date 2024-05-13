@@ -13,7 +13,7 @@ export class RepoCardComponent implements OnInit, OnDestroy {
   IsSearched: boolean = false;
   User: string = "";
   Repodetail: any;
-  Isloading: boolean = true;
+  Isloading: boolean = false;
   totalPages: number[] = [];
   currentPage: number = 1;
   pages: number = 10;
@@ -48,6 +48,7 @@ export class RepoCardComponent implements OnInit, OnDestroy {
       }
       if (this.User) {
         this.getRepo();
+        // this.Repodetail=this.responseService.getResponseData();
         console.log("jj");
       }
     });

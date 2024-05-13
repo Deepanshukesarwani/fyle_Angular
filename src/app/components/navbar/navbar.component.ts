@@ -63,6 +63,12 @@ export class NavbarComponent {
       });
     });
   }
+  handleKeypress(e:KeyboardEvent){
+    if(e.key==='Enter')
+    {
+      this.clickHandler();
+    }
+  }
   
 }
   
